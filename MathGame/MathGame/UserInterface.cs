@@ -34,24 +34,25 @@ internal class UserInterface
                 switch (choice)
                 {
                     case OperationOptions.Add:
-                        Operations add = new Add();
-                        history.Add(add.CalculationFinal());
+                        Questions("add");
                         break;
 
                     case OperationOptions.Subtract:
-                        Operations subtract = new Subtract();
-                        history.Add(subtract.CalculationFinal());
+                        Questions("subtract");
                         break;
 
                     case OperationOptions.Mulitply:
-                        Operations multiply = new Multiply();
-                        history.Add(multiply.CalculationFinal());
+                        Questions("multiply");
                         break;
 
                     case OperationOptions.Divide:
-                        Division divide = new Division();
-                        history.Add(divide.DivisionFinal());
+                        Questions("divide");
                         break;
+
+                    case OperationOptions.Random:
+                        Questions("random");
+                        break;
+
                 }
             }
             else if (main == Enums.MainMenu.ViewHistory)
@@ -69,8 +70,87 @@ internal class UserInterface
             }
 
         }
+    }
 
+    public Operations GetRandom()
+    {
+        List<Operations> list = new List<Operations>();
+        Operations divide = new Division();
+        Operations multiply = new Multiply();
+        Operations subtract = new Subtract();
+        Operations add = new Add();
 
+        list.Add(add);
+        list.Add(subtract);
+        list.Add(divide);
+        list.Add(multiply);
+
+        Random random = new Random();
+        int getRandom = random.Next(0, list.Count - 1);
+
+        return list[getRandom];
+    }
+
+    public void Questions(string op)
+    {
+        int count = 1;
+        switch (op)
+        {
+
+            case "add":
+
+                while (count < 6)
+                {
+                    Operations add = new Add();
+                    history.Add(add.CalculationFinal());
+                    count++;
+                }
+                break;
+
+            case "subtract":
+                while (count < 6)
+                {
+                    Operations subtract = new Add();
+                    history.Add(subtract.CalculationFinal());
+                    count++;
+                }
+                break;
+
+            case "multiply":
+                while (count < 6)
+                {
+                    Operations multiply = new Add();
+                    history.Add(multiply.CalculationFinal());
+                    count++;
+                }
+
+                break;
+
+            case "divide":
+                while (count < 6)
+                {
+                    Operations divide = new Add();
+                    history.Add(divide.DivisionFinal());
+                    count++;
+                }
+                break;
+
+            case "random":
+                while (count < 6)
+                {
+                    Operations random = GetRandom();
+                    if (random is Division)
+                    {
+                        history.Add(random.DivisionFinal());
+                    }
+                    else
+                    {
+                        history.Add(random.CalculationFinal());
+                    }
+                    count++;
+                }
+                break;
+        }
     }
 }
 

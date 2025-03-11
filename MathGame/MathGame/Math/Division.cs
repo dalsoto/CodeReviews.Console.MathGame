@@ -19,22 +19,4 @@ internal class Division : Operations
     {
         return Value1 / Value2;
     }
-
-    public string DivisionFinal()
-    {
-        while (true)
-        {
-            if (Value1 % Value2 != 0)
-            {
-                Random random = new Random();
-                Value1 = random.Next(1, 101);
-                Value2 = random.Next(1, 101);
-                continue;
-            }
-            else
-            {
-                return CalculationFinal();
-            }
-        }
-    }
 }

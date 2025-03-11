@@ -12,7 +12,8 @@ internal class Enums
         Add,
         Subtract,
         Mulitply,
-        Divide
+        Divide,
+        Random
     }
 
     internal enum MainMenu
